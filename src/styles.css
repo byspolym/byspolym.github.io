@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-forest: var(--forest);
+  --color-forest-foreground: var(--forest-foreground);
+  --color-ochre: var(--ochre);
+  --color-ochre-foreground: var(--ochre-foreground);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-stripe: var(--stripe);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+}
+
+:root {
+  --background: #f3efe4;
+  --foreground: #141922;
+  --card: #fffcf6;
+  --card-foreground: #141922;
+  --popover: #fffcf6;
+  --popover-foreground: #141922;
+  --primary: #0c2d6b;
+  --primary-foreground: #f6f3ea;
+  --secondary: #e7e1d3;
+  --secondary-foreground: #1a2233;
+  --muted: #ebe5d7;
+  --muted-foreground: #5b6170;
+  --accent: #b42318;
+  --accent-foreground: #fff7f5;
+  --destructive: #9f1239;
+  --destructive-foreground: #fff7f5;
+  --border: color-mix(in oklab, #141922 12%, transparent);
+  --input: color-mix(in oklab, #141922 14%, transparent);
+  --ring: #0c2d6b;
+  --navy: #0c2d6b;
+  --navy-foreground: #f6f3ea;
+  --forest: #0f6b4c;
+  --forest-foreground: #f3fbf7;
+  --ochre: #c2410c;
+  --ochre-foreground: #fff7ed;
+  --paper: #f3efe4;
+  --ink: #141922;
+  --stripe: #0c2d6b;
+  --shadow-soft: 0 1px 2px color-mix(in oklab, #141922 6%, transparent),
+    0 12px 32px -18px color-mix(in oklab, #0c2d6b 22%, transparent);
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #e8eef7;
+  --card: #121a2b;
+  --card-foreground: #e8eef7;
+  --popover: #151e31;
+  --popover-foreground: #e8eef7;
+  --primary: #8fb0e8;
+  --primary-foreground: #0b1220;
+  --secondary: #1a2438;
+  --secondary-foreground: #d5deec;
+  --muted: #182133;
+  --muted-foreground: #9aa6b8;
+  --accent: #f07167;
+  --accent-foreground: #2a0b0a;
+  --destructive: #fb7185;
+  --destructive-foreground: #2a0b0a;
+  --border: color-mix(in oklab, #e8eef7 12%, transparent);
+  --input: color-mix(in oklab, #e8eef7 16%, transparent);
+  --ring: #8fb0e8;
+  --navy: #1e3a72;
+  --navy-foreground: #e8eef7;
+  --forest: #34d399;
+  --forest-foreground: #06281c;
+  --ochre: #fb923c;
+  --ochre-foreground: #2a1406;
+  --paper: #0b1220;
+  --ink: #e8eef7;
+  --stripe: #8fb0e8;
+  --shadow-soft: 0 1px 2px color-mix(in oklab, #000 40%, transparent),
+    0 18px 40px -20px color-mix(in oklab, #000 55%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    min-height: 100dvh;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    letter-spacing: -0.03em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 22%, transparent);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@layer utilities {
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .hairline {
+    box-shadow: inset 0 0 0 1px var(--border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
